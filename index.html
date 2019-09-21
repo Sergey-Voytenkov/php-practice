@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<form action="form.php" method="post">
+			<label>Lastname:<input type="text" placeholder="Just start typing..."  name="lastname"/></label>
+			<br/>
+			<label>Firstname:<input type="text" name="firstname"/></label>
+			<br/>
+			<label>Email:<input type="email" name="email"/></label>
+			<br/>
+			<label>Gender:<input type="radio" name="gender"/>M<input type="radio" name="gender"/>F</label>
+			
+			<br/>
+			<label>
+				School:
+				<input type="radio" name="school"/>Log College Middle School
+				<input type="radio" name="school"/>Tamanend Middle School
+				<input type="radio" name="school"/>Keith Valley Middle School
+				<input type="radio" name="school"/>Upper Moreland Middle School
+			</label>
+			<br/>
+			<label>
+				Subjects:
+				<input type="checkbox" name="subject"/>STEM Robotics
+				<input type="checkbox" name="subject"/>STEM Engeneering
+				<input type="checkbox" name="subject"/>Art
+				<input type="checkbox" name="subject"/>Programing
+			</label>
+			<label>
+				About me:<br/>
+				<textarea row="3" col="300" name="aboutme"></textarea>
+			</label>
+			<br/>
+			<input type="submit"/>
+		</form>
+	</body>
+</html>
