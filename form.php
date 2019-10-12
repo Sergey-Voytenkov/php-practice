@@ -14,12 +14,22 @@
 		
 			if(isset($_POST["fchecker"])) {
 				$filename = $_POST["fchecker"];
-				if (file_exists($filename)) {
-						echo "The file $filename exists";
-					} else {
-						echo "The file $filename does not exist";
-					}
+				if (file_exists($filename)) {						
+					$handle = fopen($filename, 'r');
+					
+					fgets()
+					
+					fclose($handle);	
+						
+					
+				} else {
+					echo "The file $filename does not exist<br>";
+				}
+				
+		
 			}
+		
+			
 		?>
 	</body>
 </html>
