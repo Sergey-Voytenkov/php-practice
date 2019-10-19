@@ -16,8 +16,9 @@
 				$filename = $_POST["fchecker"];
 				if (file_exists($filename)) {						
 					$handle = fopen($filename, 'r');
-					
-					fgets()
+					while (fgets($handle) != "") {
+						echo htmlspecialchars(fgets($handle, 1));
+					}
 					
 					fclose($handle);	
 						
@@ -28,7 +29,6 @@
 				
 		
 			}
-		
 			
 		?>
 	</body>
