@@ -5,14 +5,14 @@
 				$filename = $_POST["fchecker"];
 				if (file_exists($filename)) {						
 					$handle = fopen($filename, 'r');
-					while ($buffer = (fgets($handle)) !== false) {
-						echo htmlspecialchars($buffer);
+					while (($buffer = fgets($handle)) !== false) {
+						echo htmlspecialchars($buffer) . "<br/>";
 					}
 					
 					fclose($handle);	
 						
 				} else {
-					echo "The file $filename does not exist<br>";
+					echo "The file $filename does not exist" . "<br/>";
 				}
 			}
 		?>
