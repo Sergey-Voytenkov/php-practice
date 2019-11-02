@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	
+		<title>PHP Practice</title>
+		<link rel="stylesheet" type="text/css" href="css.css"/>
 	</head>
-	
 	<body>
-		<form action="index.php" method="post">
-			<textarea rows="40" cols="100" name="content"><?php
-				if (isset($_POST['content'])) 
-					echo $_POST['content']; 
-			?></textarea>
-			<br/>
-			<input type="text" name="filename" value="<?php
-				if (isset($_POST["filename"]))
-					echo $_POST["filename"];
-			?>"/>
-			<input type="submit"/>
-		</form>
-		<?php
-			if (isset($_POST["filename"])) {
-				$file = $_POST["filename"];
-				$handle = fopen($file, 'w');
-				fwrite ($handle , $_POST["content"]);
-				fclose($handle);
-
-			} 
-		?>
+		<div class="main">
+			<div>
+				<div class="fileinputs"></div>
+				<textarea></textarea>
+			</div>
+			<div>FLUFLUFLU</div>
+		</div>
 	</body>
 </html>
