@@ -7,10 +7,19 @@
 	<body>
 		<div class="main">
 			<div>
-				<div class="fileinputs"></div>
-				<textarea></textarea>
+				<div class="fileinputs">
+					<span><input type="text" value="Type Document Name" id="DocId1"/></span>
+					<span><input type="submit"/></span>
+				</div>
+				<textarea id="docshow"></textarea>
 			</div>
-			<div>FLUFLUFLU</div>
+			<div>
+			<div class="fileinputs2">
+					<span><input type="text" value="Type Document Name" id="DocId2"/></span>
+					<span><input type="submit"/></span>
+				</div>
+				<textarea id="docwrite"></textarea>
+			</div>
 		</div>
 	</body>
 </html>
