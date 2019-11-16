@@ -11,7 +11,7 @@ body, html {
 	display: flex;
 	border: 1px solid black;
 	background-color: lightblue;
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	flex-direction: column;
 }

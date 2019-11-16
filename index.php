@@ -11,39 +11,36 @@
 				<div class="fileinputs">
 					<span><input type="text" placeholder="Type Document Name" name="readfile"/><?php?></span>
 					<span>
-						<button type="submit">
-							<i class="fa fa-bicycle" aria-hidden="true"></i>
-							Read
+						<button name="command" value="new" type="submit">
+							<i class="fa fa-file-o" aria-hidden="true"></i>
+						</button>
+						<button name="command" value="open" type="submit">
+							<i class="fa fa-file-text" aria-hidden="true"></i>
+						</button>
+						<button name="command" value="save" type="submit">
+							<i class="fa fa-floppy-o" aria-hidden="true"></i>
 						</button>
 					</span>
 				</div>
-				<textarea name="docread"><?php
+				<textarea name="docread"><?php				
+						if (isset($_POST['command'])) {
+							if ($_POST['command'] == 'new') {
+								//do something on New button pressed
+							} else if ($_POST['command'] == 'open') {
+								//do something on Open button pressed
+							} else {
+								//do something on any other button (which is save) button pressed
+							}
+						}
+				
 						if(isset($_POST["readfile"])) {
 							$file = $_POST["readfile"];
 							if(file_exists($file)) {
-								$handle = fopen($file, 'r');
-								while(($buffer = fgets($handle)) !== false) {
-									echo htmlspecialchars($buffer);
-								}
+								echo htmlspecialchars(file_get_contents($file));
 							}
 							else echo "File Not Found, Or Not Correct";
 						}
 					?></textarea>
-			</form>
-			<form method="post">
-				<div class="fileinputs">
-					<span><input type="text" placeholder="Type Document Name" name="writefile"/></span>
-					<span><input type="submit" value="Write"/></span>
-				</div>
-				<textarea name="docwrite"><?php
-						if(isset($_POST["writefile"])) {
-							$file = $_POST["writefile"];
-							$handle = fopen($file, 'w');
-							fwrite($handle, $_POST["docwrite"]);
-							fclose($handle);
-						}
-						if(isset($_POST["docwrite"])) echo $_POST["docwrite"];
-				?></textarea>
 			</form>
 		</div>
 		
