@@ -9,7 +9,7 @@
 		<div class="main">
 			<form method="post">
 				<div class="fileinputs">
-					<span><input type="text" placeholder="Type Document Name" name="readfile"/></span>
+					<span><input type="text" placeholder="Type Document Name" name="readfile"/><?php?></span>
 					<span>
 						<button type="submit">
 							<i class="fa fa-bicycle" aria-hidden="true"></i>
@@ -17,7 +17,7 @@
 						</button>
 					</span>
 				</div>
-				<textarea id="docread"><?php
+				<textarea name="docread"><?php
 						if(isset($_POST["readfile"])) {
 							$file = $_POST["readfile"];
 							if(file_exists($file)) {
@@ -35,7 +35,15 @@
 					<span><input type="text" placeholder="Type Document Name" name="writefile"/></span>
 					<span><input type="submit" value="Write"/></span>
 				</div>
-				<textarea id="docwrite"></textarea>
+				<textarea name="docwrite"><?php
+						if(isset($_POST["writefile"])) {
+							$file = $_POST["writefile"];
+							$handle = fopen($file, 'w');
+							fwrite($handle, $_POST["docwrite"]);
+							fclose($handle);
+						}
+						if(isset($_POST["docwrite"])) echo $_POST["docwrite"];
+				?></textarea>
 			</form>
 		</div>
 		
