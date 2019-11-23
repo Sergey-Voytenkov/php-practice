@@ -24,8 +24,14 @@
 				</div>
 				<textarea name="docread"><?php				
 						if (isset($_POST['command'])) {
-							if ($_POST['command'] == 'new') {
+							if ($_POST['command']) {
 								//do something on New button pressed
+								if(isset($_POST["command" == 'new'])) {
+									$filename = $_POST["docread"];
+									$handle = fopen($filename, 'w');
+									fwrite($handle, $_POST["docread"]);
+									fclose($handle);
+								}
 							} else if ($_POST['command'] == 'open') {
 								//do something on Open button pressed
 							} else {
