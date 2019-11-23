@@ -9,7 +9,13 @@
 		<div class="main">
 			<form method="post">
 				<div class="fileinputs">
-					<span><input type="text" placeholder="Type Document Name" name="readfile"/><?php?></span>
+					<span><input type="text"
+								 placeholder="Type Document Name"
+								 name="readfile"
+								 value="<?php if(isset($_POST["readfile"])) echo $_POST["readfile"]; ?>"
+						  />
+						
+					</span>
 					<span>
 						<button name="command" value="new" type="submit">
 							<i class="fa fa-file-o" aria-hidden="true"></i>
@@ -24,27 +30,23 @@
 				</div>
 				<textarea name="docread"><?php				
 						if (isset($_POST['command'])) {
-							if ($_POST['command']) {
+							if ($_POST['command'] == 'new') {
 								//do something on New button pressed
-								if(isset($_POST["command" == 'new'])) {
-									$filename = $_POST["docread"];
-									$handle = fopen($filename, 'w');
-									fwrite($handle, $_POST["docread"]);
-									fclose($handle);
-								}
-							} else if ($_POST['command'] == 'open') {
+								$filename = $_POST["readfile"];
+								$handle = fopen($filename, 'w');
+								fwrite($handle, $_POST["docread"]);
+								fclose($handle);
+								
+							} else if ($_POST['command'] == 'open') {								
 								//do something on Open button pressed
+								$filename = $_POST['readfile'];
+								if(file_exists($filename))
+									echo htmlspecialchars(file_get_contents($filename));
+								else echo "File Not Found, Or Not Correct";
+								
 							} else {
 								//do something on any other button (which is save) button pressed
 							}
-						}
-				
-						if(isset($_POST["readfile"])) {
-							$file = $_POST["readfile"];
-							if(file_exists($file)) {
-								echo htmlspecialchars(file_get_contents($file));
-							}
-							else echo "File Not Found, Or Not Correct";
 						}
 					?></textarea>
 			</form>
