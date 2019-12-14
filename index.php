@@ -3,22 +3,22 @@
 	<head>
 	</head>
 	<body>
+		<form method="POST">
+			<input type="text" name="username" placeholder="Type Your User Name Here"/>
+			<input type="password" name="password" placeholder="Type Your Password Here">
+			<input type="submit" value="Create">
+		</form>
 		<?php 
-			$vasya = 'He runs around like a waldling chickmunk.';
-			$s = serialize($vasya);
-			echo $vasya . '<br/>' . $s . '<br/>';
-			
-			$pi = 3.141592;
-			$s = serialize($pi);
-			echo $pi . '<br/>' . $s . '<br/>';
-			
-			$arr = ["Hello World 0-0", 1234567890, false];
-			$s = serialize($arr);
-			print_r($arr); 
-			echo $s . '<br/>';
-			
-			$arr2 = unserialize($s);
-			print_r($arr2);
+			if(isset($_POST['username']) & isset($_POST['password'])) {
+				$arr = [$_POST['username'], $_POST['password']];
+				print_r($arr);
+				
+				$contents = serialize($arr);
+				$file = 'users.txt';
+				file_put_contents($file, $contents);
+				
+				print_r('<br/>' . $contents);
+			}
 		?>
 	</body>
 </html>
