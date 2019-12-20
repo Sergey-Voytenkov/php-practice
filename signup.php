@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	</head>
 	<body>
 		<?php 
 			if(isset($_POST['username']) & isset($_POST['password'])) {
@@ -11,13 +9,13 @@
 					$users[] = [$_POST['username'], $_POST['password'], 0];
 					$contents = serialize($users);
 					file_put_contents('users.txt', $contents);
-					echo '<p>New User was Successfully Created</p>'
+					echo '<p>New User was Successfully Created</p>';
 				}
 				else {
 					$arr = [$_POST['username'], $_POST['password'], 1];
 					$contents = serialize($arr);
 					file_put_contents('users.txt', $contents);
-					echo '<p>New Admin was Successfully Created</p>'
+					echo '<p>New Admin was Successfully Created</p>';
 				}
 			}
 		?>
