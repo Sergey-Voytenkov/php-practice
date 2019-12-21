@@ -11,12 +11,7 @@
 					file_put_contents('users.txt', $contents);
 					echo '<p>New User was Successfully Created</p>';
 				}
-				else {
-					$arr = [$_POST['username'], $_POST['password'], 1];
-					$contents = serialize($arr);
-					file_put_contents('users.txt', $contents);
-					echo '<p>New Admin was Successfully Created</p>';
-				}
+				else echo 'Sorry, the system is having maintanance. Please try again later.';
 			}
 		?>
 		<form method="POST">
