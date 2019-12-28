@@ -1,4 +1,7 @@
 <?php	
-	$users = [['admin', 'admin', 1]];
+	$users = [[   'login'	=> 'admin',
+			   'password'	=> 'admin',
+			     'access' 	=> 1
+			  ]];
 	file_put_contents('users.txt', serialize($users));
 ?>

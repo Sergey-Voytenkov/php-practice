@@ -6,7 +6,7 @@
 				if(file_exists('users.txt')){
 					$contents = file_get_contents('users.txt');
 					$users = unserialize($contents);
-					$users[] = [$_POST['username'], $_POST['password'], 0];
+					$users[] = ['login' => $_POST['username'], 'password' => $_POST['password'], 'access' => 0];
 					$contents = serialize($users);
 					file_put_contents('users.txt', $contents);
 					echo '<p>New User was Successfully Created</p>';
