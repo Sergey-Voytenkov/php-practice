@@ -4,7 +4,7 @@
 		<style>
 			html, body {
 				margin: 0;
-				background-color: silver;
+				background-color: orange;
 			}
 			
 			.form {
