@@ -1,10 +1,25 @@
 <html>
+	<head>
+		<style>
+			html, body {
+				margin: 0;
+				background-color: silver;
+			}
+			
+			.table {
+				margin-top: 20px;
+				margin-left: 25px;
+				background-color: white;
+			}
+			
+		</style>
+	</head>
     <body>
 		<?php
 			$filename = file_get_contents('users.txt');
 			$users = unserialize($filename);
 		?>
-		<table border="1">
+		<table class="table" border="1" cellspacing="0" cellpadding="4">
 			<tr>
 				<th>Username</th>
 				<th>Access</th>
@@ -18,33 +33,6 @@
 					echo '<td>' . $user['password'] . '</td>';
 					echo '</tr>';
 				}
-				
-				
-				/*foreach($users as $user) {
-					echo '<tr>';
-					foreach($user as $key=>$value)
-						echo '<td>' . $key . '>>' . $value . '</td>';
-					echo '</tr>';
-				}*/
-				
-				
-				
-				
-				
-				$person = [
-					'first_name' => '...',
-					'last_name' => '...',
-					'middle_name' => '...',
-					'email' => '...',
-					'dob' => '...',
-					'height' => '...',
-					'eye-color' => ''
-				]
-				
-				$people($peron1, $person2)
-				
-				
-				$person2['height'] = "5'8/""
 			?>
 		</table>
         
