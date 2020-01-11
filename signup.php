@@ -3,28 +3,21 @@
 	<head>
 		<style>
 			html, body {
+				height: 100%;
 				margin: 0;
 				background-color: lightblue;
-				}
-			
-			.form {
-					display: flex;
-					justify-content: center;
-					flex-direction: column;
-					
 			}
-			.span {
-				width: 50%;
-			}
-			.input {
+			body {
 				display: flex;
-				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				border: 1px solid green;
 			}
-			.center {
-				display: flex;
-				background-color: white;
-				border-radius: 25px;
-				border: 1px black solid;
+			form {
+				height: 480px;
+				width: 640px;
+				border: 1px solid red;
+				background-color: yellow;
 			}
 		</style>
 	</head>
@@ -42,12 +35,10 @@
 				else echo 'Sorry, the system is having maintanance. Please try again later.';
 			}
 		?>
-		<form method="POST" class='form'>
-			<span class="center">
-				<input class="input"type="text" name="username" placeholder="Type Your User Name Here"/>
-				<input class="input" type="password" name="password" placeholder="Type Your Password Here">
-				<input class="input"type="submit" value="Create">
-			</span>
+		<form method="POST">
+			<input class="input"type="text" name="username" placeholder="Type Your User Name Here"/>
+			<input class="input" type="password" name="password" placeholder="Type Your Password Here">
+			<input class="input"type="submit" value="Create">
 		</form>
 	</body>
 </html>
