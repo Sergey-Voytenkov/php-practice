@@ -4,11 +4,27 @@
 		<style>
 			html, body {
 				margin: 0;
-				background-color: orange;
-			}
+				background-color: lightblue;
+				}
 			
 			.form {
-					margin: 25px;
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
+					
+			}
+			.span {
+				width: 50%;
+			}
+			.input {
+				display: flex;
+				flex-direction: column;
+			}
+			.center {
+				display: flex;
+				background-color: white;
+				border-radius: 25px;
+				border: 1px black solid;
 			}
 		</style>
 	</head>
@@ -27,9 +43,11 @@
 			}
 		?>
 		<form method="POST" class='form'>
-			<input type="text" name="username" placeholder="Type Your User Name Here"/>
-			<input type="password" name="password" placeholder="Type Your Password Here">
-			<input type="submit" value="Create">
+			<span class="center">
+				<input class="input"type="text" name="username" placeholder="Type Your User Name Here"/>
+				<input class="input" type="password" name="password" placeholder="Type Your Password Here">
+				<input class="input"type="submit" value="Create">
+			</span>
 		</form>
 	</body>
 </html>
