@@ -14,14 +14,14 @@
 				border: 1px solid green;
 			}
 			form {
-				display:flex;
+				display: flex;
 				height: 480px;
 				width: 640px;
 				border: 1px solid red;
 				border-radius: 10px;
 				background-color: yellow;
 				flex-direction: column;
-				align-items: center;
+				justify-content: center;
 				
 			}
 		</style>

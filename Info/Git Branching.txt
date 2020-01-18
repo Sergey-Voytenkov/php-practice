@@ -2,6 +2,13 @@ git branch [local branches]
 git branch -r [remote branches]
 git branch <name_of_branch> [Creates new branch]
 git checkout <branch_name> [Change current branch to Another]
-git log -r -<number> [Prints the number of recent commits specified from LOCAL]
+git log -<number> [Prints the number of recent commits specified from LOCAL]
 git log origin/master -<number> [Prints the number of recent commits specified from REMOTE MASTER]
 git fetch [Synxs with the branches created on another device]
+
+To delete on LOCAL
+git branch -d <branch_name> [Deletes the branch if merged, if not merged it will show error]
+           -D <brranch_name> [Forces the branch to delete, no mater if it was merged]
+
+ To delete on REMOTE
+git push origin :<branch_name> [Completly  deletes of of ORIGIN, there is  no way to recover unless another device has that branch on local]
