@@ -14,10 +14,15 @@
 				border: 1px solid green;
 			}
 			form {
+				display:flex;
 				height: 480px;
 				width: 640px;
 				border: 1px solid red;
+				border-radius: 10px;
 				background-color: yellow;
+				flex-direction: column;
+				align-items: center;
+				
 			}
 		</style>
 	</head>
@@ -36,9 +41,9 @@
 			}
 		?>
 		<form method="POST">
-			<input class="input"type="text" name="username" placeholder="Type Your User Name Here"/>
-			<input class="input" type="password" name="password" placeholder="Type Your Password Here">
-			<input class="input"type="submit" value="Create">
+				<input type="text" name="username" placeholder="Type Your User Name Here"/>
+				<input type="password" name="password" placeholder="Type Your Password Here">
+				<input type="submit" value="Create">
 		</form>
 	</body>
 </html>

@@ -1,0 +1,7 @@
+git branch [local branches]
+git branch -r [remote branches]
+git branch <name_of_branch> [Creates new branch]
+git checkout <branch_name> [Change current branch to Another]
+git log -r -<number> [Prints the number of recent commits specified from LOCAL]
+git log origin/master -<number> [Prints the number of recent commits specified from REMOTE MASTER]
+git fetch [Synxs with the branches created on another device]
