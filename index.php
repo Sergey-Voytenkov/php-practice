@@ -1,9 +1,8 @@
 <html>
 	<body>
 		<?php
-			$cookie_name = "user";
-			$cookie_value = "John Doe";
-			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+			setcookie("cookie", "He says its Cookie Time", 0, "/");
+			
 		?>
 	</body>
 </html>
