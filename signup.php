@@ -5,28 +5,25 @@
 			html, body {
 				height: 100%;
 				margin: 0;
-				background-color: lightblue;
 			}
 			body {
+				background-image: url("background.jpg");
+				background-size: cover;
+				opacity: 0.1;
+			}
+			.overlay {
+				width: 100%;
+				height: 100%;
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				border: 1px solid green;
+				background-color: black;
 			}
-			form {
-				display: flex;
-				height: 480px;
-				width: 640px;
-				border: 1px solid red;
-				border-radius: 10px;
-				background-color: yellow;
-				flex-direction: column;
-				justify-content: center;
-				
-			}
+
 		</style>
 	</head>
 	<body>
+		<div class="overlay">
 		<?php 
 			if(isset($_POST['username']) & isset($_POST['password'])) {
 				if(file_exists('users.txt')){
@@ -40,10 +37,15 @@
 				else echo 'Sorry, the system is having maintanance. Please try again later.';
 			}
 		?>
+		
 		<form method="POST">
-				<input type="text" name="username" placeholder="Type Your User Name Here"/>
-				<input type="password" name="password" placeholder="Type Your Password Here">
-				<input type="submit" value="Create">
+			<input type="text" name="username" placeholder="Type Your User Name Here"/>
+			<input type="password" name="password" placeholder="Type Your Password Here">
+			<input type="submit" value="Create">
 		</form>
+		
+		
+		
+		</div>
 	</body>
 </html>
