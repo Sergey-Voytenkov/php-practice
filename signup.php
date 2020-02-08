@@ -18,8 +18,19 @@
 				justify-content: center;
 				align-items: center;
 				background-color: black;
+				z-index: 1;
 			}
-
+			.back {
+				position: absolute;
+				width: 500px;
+				height: 400px;
+				background-color: white;
+				z-index: 2;
+				opacity: 1;
+			}
+			form {
+				z-index: 3;
+			}
 		</style>
 	</head>
 	<body>
@@ -37,13 +48,13 @@
 				else echo 'Sorry, the system is having maintanance. Please try again later.';
 			}
 		?>
-		
+		<div class="back">
 		<form method="POST">
 			<input type="text" name="username" placeholder="Type Your User Name Here"/>
 			<input type="password" name="password" placeholder="Type Your Password Here">
 			<input type="submit" value="Create">
 		</form>
-		
+		</div>
 		
 		
 		</div>
