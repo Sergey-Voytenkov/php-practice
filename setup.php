@@ -1,5 +1,5 @@
 <?php	
-	$users = [[   'login'	=> 'admin',
+	$users = [['username'	=> 'admin',
 			   'password'	=> 'admin',
 			     'access' 	=> 1
 			  ]];

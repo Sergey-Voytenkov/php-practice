@@ -36,7 +36,7 @@
 	<body>
 		<div class="overlay">
 		<?php 
-			if(isset($_POST['username']) & isset($_POST['password'])) {
+			if(isset($_POST['username']) && isset($_POST['password'])) {
 				if(file_exists('users.txt')){
 					$contents = file_get_contents('users.txt');
 					$users = unserialize($contents);
