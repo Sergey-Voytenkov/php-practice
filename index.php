@@ -28,7 +28,7 @@
 			<?php
 				foreach($users as $user) {
 					echo '<tr>';
-					echo '<td>' . $user['login'] . '</td>';
+					echo '<td>' . $user['username'] . '</td>';
 					echo '<td>' . $user['access'] . '</td>';
 					echo '<td>' . $user['password'] . '</td>';
 					echo '</tr>';

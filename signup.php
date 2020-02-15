@@ -1,3 +1,19 @@
+<?php 
+	if(isset($_POST['username']) && isset($_POST['password'])) {
+		if(file_exists('users.txt')){
+			if (strlen($_POST['password']) < 8) $error = 'Password must be at least 8 characters';
+			else {
+				$contents = file_get_contents('users.txt');
+				$users = unserialize($contents);
+				$users[] = ['username' => $_POST['username'], 'password' => $_POST['password'], 'access' => 0];
+				$contents = serialize($users);
+				file_put_contents('users.txt', $contents);
+				header('Location: signin.php');
+			}
+		}
+		else $error = 'Sorry, the system is having maintanance. Please try again later.';
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,6 +26,9 @@
 				background-image: url("background.jpg");
 				background-size: cover;
 				opacity: 0.1;
+			}
+			.error {
+				color: red;
 			}
 			.overlay {
 				width: 100%;
@@ -35,24 +54,14 @@
 	</head>
 	<body>
 		<div class="overlay">
-		<?php 
-			if(isset($_POST['username']) && isset($_POST['password'])) {
-				if(file_exists('users.txt')){
-					$contents = file_get_contents('users.txt');
-					$users = unserialize($contents);
-					$users[] = ['login' => $_POST['username'], 'password' => $_POST['password'], 'access' => 0];
-					$contents = serialize($users);
-					file_put_contents('users.txt', $contents);
-					echo '<p>New User was Successfully Created</p>';
-				}
-				else echo 'Sorry, the system is having maintanance. Please try again later.';
-			}
-		?>
+		
 		<div class="back">
 		<form method="POST">
 			<input type="text" name="username" placeholder="Type Your User Name Here"/>
 			<input type="password" name="password" placeholder="Type Your Password Here">
 			<input type="submit" value="Create">
+			
+			<?php if (isset($error)) echo "<div class=\"error\">$error</div>"; ?>
 		</form>
 		</div>
 		

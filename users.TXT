@@ -1,1 +1,1 @@
-a:1:{i:0;a:3:{s:8:"username";s:5:"admin";s:8:"password";s:5:"admin";s:6:"access";i:1;}}
+a:3:{i:0;a:3:{s:8:"username";s:5:"admin";s:8:"password";s:5:"admin";s:6:"access";i:1;}i:1;a:3:{s:5:"login";s:6:"qwerty";s:8:"password";s:8:"12345678";s:6:"access";i:0;}i:2;a:3:{s:8:"username";s:6:"Sergey";s:8:"password";s:10:"qwertyuiop";s:6:"access";i:0;}}
