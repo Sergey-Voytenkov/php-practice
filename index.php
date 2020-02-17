@@ -1,5 +1,9 @@
 <?php 
-	if(isset($_COOKIE['username'])) {} else header('Location: signin.php')
+	if(!isset($_COOKIE['username'])) header('Location: signin.php');
+	
+	if(isset($_POST['signout'])) {
+		setcookie('username', '', time() -5200);
+	}
 ?>	
 <!DOCTYPE html>
 <html>
@@ -21,11 +25,15 @@
 				align-items: center;
 				background: rgba(0,0,0,0.1);
 				position: absolute;
+				flex-direction: column;
 			}
 			.table {
 				background-color: white;
 			}
-			
+			.signout {
+				color: red;
+				margin-top: 5px;
+			}
 		</style>
 	</head>
     <body>
@@ -50,6 +58,12 @@
 					}
 				?>
 			</table>
+			<div>
+				<form method="POST">
+					<input type='hidden' name='signout'/>
+					<input type='submit' value="Sign Out" class="signout"/>
+				</form>
+			</div>
 		</div>
     </body>
 </html>
