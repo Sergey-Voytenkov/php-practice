@@ -25,7 +25,6 @@
 			body {
 				background-image: url("background.jpg");
 				background-size: cover;
-				opacity: 0.1;
 			}
 			.error {
 				color: red;
@@ -36,36 +35,46 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: black;
+				background: rgba(0,0,0,0.1);
 				z-index: 1;
 			}
 			.back {
+				display: flex;
 				position: absolute;
 				width: 500px;
 				height: 400px;
-				background-color: white;
+				background: rgba(250,250,250,0.25);
+				border-radius: 100px;
 				z-index: 2;
-				opacity: 1;
 			}
 			form {
+				display: flex;
+				width: 100%;
+				height: 100%;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
 				z-index: 3;
+			}
+			input {
+				display: flex;
+				border-style: hidden;
+				border-radius: 2px;
+				margin-bottom: 15px;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="overlay">
-		
-		<div class="back">
-		<form method="POST">
-			<input type="text" name="username" placeholder="Type Your User Name Here"/>
-			<input type="password" name="password" placeholder="Type Your Password Here">
-			<input type="submit" value="Create">
-			
-			<?php if (isset($error)) echo "<div class=\"error\">$error</div>"; ?>
-		</form>
-		</div>
-		
-		
+			<div class="back">
+				<form method="POST">
+					<input type="text" name="username" placeholder="Username"/>
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" value="Create">
+					
+					<?php if (isset($error)) echo "<div class=\"error\">$error</div>"; ?>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
