@@ -3,6 +3,7 @@
 	
 	if(isset($_POST['signout'])) {
 		setcookie('username', '', time() -5200);
+		header('Refresh: 0');
 	}
 ?>	
 <!DOCTYPE html>
