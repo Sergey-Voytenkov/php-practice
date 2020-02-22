@@ -1,9 +1,7 @@
 <?php 
-	if(!isset($_COOKIE['username'])) header('Location: signin.php');
-	
-	if(isset($_POST['signout'])) {
-		setcookie('username', '', time() -5200);
-		header('Refresh: 0');
+	if(!isset($_COOKIE['username'])) {
+		header('Location: signin.php');
+		exit;
 	}
 ?>	
 <!DOCTYPE html>
@@ -60,10 +58,7 @@
 				?>
 			</table>
 			<div>
-				<form method="POST">
-					<input type='hidden' name='signout'/>
-					<input type='submit' value="Sign Out" class="signout"/>
-				</form>
+				<a href="signout.php" class="signout">Sign Out</a>
 			</div>
 		</div>
     </body>

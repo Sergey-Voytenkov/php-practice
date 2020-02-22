@@ -9,6 +9,7 @@
 				$contents = serialize($users);
 				file_put_contents('users.txt', $contents);
 				header('Location: signin.php');
+				exit;
 			}
 		}
 		else $error = 'Sorry, the system is having maintanance. Please try again later.';
