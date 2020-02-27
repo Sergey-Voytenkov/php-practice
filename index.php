@@ -7,40 +7,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			html, body {
-				margin: 0;
-				height: 100%;
-			}
-			body {
-				background-image: url("background.jpg");
-				background-size: cover;
-			}
-			.overlay {
-				width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background: rgba(0,0,0,0.1);
-				position: absolute;
-				flex-direction: column;
-			}
-			.table {
-				background-color: white;
-			}
-			.signout {
-				color: red;
-				margin-top: 5px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
     <body>
 		<?php
 			$filename = file_get_contents('users.txt');
 			$users = unserialize($filename);
 		?>
-		<div class="overlay">
+		<div class="index_overlay">
 			<table class="table" border="1" cellspacing="0" cellpadding="4">
 				<tr>
 					<th>Username</th>
@@ -58,7 +32,7 @@
 				?>
 			</table>
 			<div>
-				<a href="signout.php" class="signout">Sign Out</a>
+				<a href="signout.php" class="signout"><button type=button>Sign Out</button></a>
 			</div>
 		</div>
     </body>
