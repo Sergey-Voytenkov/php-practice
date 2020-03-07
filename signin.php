@@ -3,7 +3,9 @@
 		header('Location: index.php'); 
 		exit;
 	}
-
+	if(isset($_POST['username'])) if(strlen($_POST['username']) < 1) $error = "Please Input Username.";
+		else if(strlen($_POST['password'] < 8)) $error = "The Password must be 8 or more Numbers.";
+	
 	if(isset($_POST['username'], $_POST['password'])) {
 		$contents = file_get_contents('users.txt');
 		$users = unserialize($contents);
@@ -33,6 +35,7 @@
 					<input type="text" placeholder="Username" name="username"/>
 					<input type="password" placeholder="Password" name="password"/>
 					<input type="submit" value="Submit" name="submit"/>
+					<?php if (isset($error)) echo "<div class=\"error\">$error</div>"; ?>
 				</form>
 			</div>
 		</div>
