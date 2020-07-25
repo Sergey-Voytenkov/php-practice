@@ -13,10 +13,10 @@
 		$signin_name = $_POST['username'];
 		$signin_password = md5($_POST['password']);
 		$command = "select * from users where name='$signin_name' and password='$signin_password'";
-		$users = mysqli_query($connection, $command);
+		$users = mysqli_query($db, $command);
 		if ($users) {
 			$user = mysqli_fetch_assoc($users);
-			mysqli_close($connection);
+			mysqli_close($db);
 			
 			if ($user) {
 				setcookie('userId', $user['id'], time()+60*20, "/");
@@ -28,7 +28,7 @@
 		
 		
 		$errors[]= 'User not found';
-	}
+	} 
 	$error = implode('<br>', $errors);
 	
 ?><!DOCTYPE html>
