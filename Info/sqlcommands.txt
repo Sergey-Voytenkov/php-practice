@@ -1,0 +1,15 @@
+select * from animals where name='ploop'; *Select all records that have name that is specified. 
+
+select * from animals where name='ploop'; *select all records that do not have the name specified.
+
+select * from animals where name like '%ploop%' *Select all records that have the word ploop inside.
+
+select * from animals where name like '_ploop_' * Select any records that have any one caracter before and after ploop.
+
+delete from <table>; * DELETES ALL RECORDS FROM TABLE WITHOUT FILTERING.
+
+delete form <table> where name='plee' * Deletes all records that have plee.
+
+update animals set name='Ploop' where name='Rat' *Changes all records and sets there names to be ploop where current name is rat.
+
+update animals set  name='Rat' * Set all records to rat without fitering, ALL OF THEM. 

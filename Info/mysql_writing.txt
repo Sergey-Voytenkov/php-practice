@@ -1,0 +1,3 @@
+create table animals(
+id integer not null unique,
+name char(32));

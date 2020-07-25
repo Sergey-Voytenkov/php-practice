@@ -1,39 +1,41 @@
 <?php 
-	if(!isset($_COOKIE['username'])) {
+	include 'db.php';
+	
+	if(!isset($_COOKIE['userId'])) {
 		header('Location: signin.php');
 		exit;
 	}
-?>	
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-    <body>
-		<?php
-			$filename = file_get_contents('users.txt');
-			$users = unserialize($filename);
-		?>
-		<div class="index_overlay">
+	</head><div class="index_overlay">
 			<table class="table" border="1" cellspacing="0" cellpadding="4">
 				<tr>
-					<th>Username</th>
-					<th>Access</th>
+					<th>id</th>
+					<th>Name</th>
 					<th>Password</th>
+					<th>email</th>
+					<th>Admin</th>
 				</tr>
 				<?php
-					foreach($users as $user) {
-						echo '<tr>';
-						echo '<td>' . $user['username'] . '</td>';
-						echo '<td>' . $user['access'] . '</td>';
-						echo '<td>' . $user['password'] . '</td>';
-						echo '</tr>';
+					if ($connection) {
+						$data = mysqli_query($connection, 'select * from users');
 					}
+					while ($row = mysqli_fetch_assoc($data)) {
+                        echo"<tr>";
+                        foreach ($row as $collumn) echo "<td>$collumn</td>";
+                        echo"</tr>";
+                    }
+
+                    mysqli_close($connection);
 				?>
 			</table>
 			<div>
 				<a href="signout.php" class="signout"><button type=button>Sign Out</button></a>
 			</div>
 		</div>
+    <body>
+		
     </body>
 </html>

@@ -1,29 +1,38 @@
 <?php
-	if (isset($_COOKIE['username'])) {
+	if (isset($_COOKIE['userId'])) {
 		header('Location: index.php'); 
 		exit;
 	}
-	if(isset($_POST['username'])) if(strlen($_POST['username']) < 1) $error = "Please Input Username.";
-		else if(strlen($_POST['password'] < 8)) $error = "The Password must be 8 or more Numbers.";
+	$errors = Array();
+	if(isset($_POST['username']) && strlen($_POST['username']) < 1) $errors[]= "Please Input Username. ";
+	if(isset($_POST['password']) && strlen($_POST['password']) < 8) $errors[]= "The Password must be 8 or more characters. ";
 	
-	if(isset($_POST['username'], $_POST['password'])) {
-		$contents = file_get_contents('users.txt');
-		$users = unserialize($contents);
-		foreach($users as $user) {
+	if(count($errors) == 0 && isset($_POST['username'], $_POST['password'])) {
+		include 'db.php';
+		
+		$signin_name = $_POST['username'];
+		$signin_password = md5($_POST['password']);
+		$command = "select * from users where name='$signin_name' and password='$signin_password'";
+		$users = mysqli_query($connection, $command);
+		if ($users) {
+			$user = mysqli_fetch_assoc($users);
+			mysqli_close($connection);
 			
-			if ($user['username'] != $_POST['username']) continue;
-			if ($user['password'] != $_POST['password']) continue;
-			
-			setcookie('username', $_POST['username'], time()+60*5, "/");
-			header('Location: index.php');
-			exit;
+			if ($user) {
+				setcookie('userId', $user['id'], time()+60*20, "/");
+				if($user['admin'] == 1) header('Location: admin/index.php');
+				else header('Location: index.php');
+				exit;
+			}
 		}
+		
+		
+		$errors[]= 'User not found';
 	}
+	$error = implode('<br>', $errors);
 	
-	
-?>
-<!DOCTYPE html>
-<html lang="en">
+?><!DOCTYPE html>
+<html>
 	<head>
 		<title>My Signin</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
