@@ -16,6 +16,6 @@
 			echo "Number of users created $numrec";
 		else echo 'Failed to create USER.';
 	};
-	mysqli_close($connection);
+	mysqli_close($db);
 	
 ?>

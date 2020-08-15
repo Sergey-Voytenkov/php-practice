@@ -1,5 +1,5 @@
 <?php 
-	include 'db.php';
+	include 'user.php'; 
 	
 	if(!isset($_COOKIE['userId'])) {
 		header('Location: signin.php');
@@ -19,16 +19,16 @@
 					<th>Admin</th>
 				</tr>
 				<?php
-					if ($connection) {
-						$data = mysqli_query($connection, 'select * from users');
-					}
-					while ($row = mysqli_fetch_assoc($data)) {
-                        echo"<tr>";
-                        foreach ($row as $collumn) echo "<td>$collumn</td>";
-                        echo"</tr>";
-                    }
-
-                    mysqli_close($connection);
+					$result = User::find_all();
+					foreach($result as $user) {
+						echo '<tr>';
+						echo '<td>' . $user->id . '</td>';
+						echo '<td>' . $user->name . '</td>';
+						echo '<td>' . $user->password . '</td>';
+						echo '<td>' . $user->email . '</td>';
+						echo '<td>' . $user->admin . '</td>';
+						echo '</tr>';
+					} 
 				?>
 			</table>
 			<div>

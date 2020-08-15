@@ -7,7 +7,7 @@
 		
 		
 		$userid = $_COOKIE['userId'];
-		$result = mysqli_query($connection, "select * from users where id=$userid");
+		$result = mysqli_query($db, "select * from users where id=$userid");
 		if($result) {
 			$user = mysqli_fetch_assoc($result);
 			if($user) {
@@ -38,10 +38,10 @@
 					<th>Action</th>
 				</tr>
 				<?php
-					if ($connection) {
-						$data = mysqli_query($connection, 'select * from users');
+					if ($db) {
+						$data = mysqli_query($db, 'select * from users');
 					}
-					while ($row = mysqli_fetch_assoc($data)) {
+					while ($row = mysqli_fetch_assoc(false)) {
                         echo"<tr>";
                         foreach ($row as $collumn) echo "<td>$collumn</td>";
 						echo "<td>";
@@ -66,7 +66,7 @@
                         echo"</tr>";
                     }
 
-                    mysqli_close($connection);
+                    mysqli_close($db);
 				?>
 			</table>
 			<div>

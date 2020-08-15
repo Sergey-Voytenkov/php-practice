@@ -7,9 +7,9 @@
 			$pssd = md5($_POST['password']);
 			$email = $_POST['email'];
 			$query = "insert into users(name, password, email) values('$name', '$pssd', '$email')";
-			mysqli_query($connection, $query);
+			mysqli_query($db, $query);
 			
-			mysqli_close($connection);
+			mysqli_close($db);
 			header('Location: signin.php');
 			exit;
 		}
