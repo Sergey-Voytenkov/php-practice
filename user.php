@@ -11,20 +11,23 @@
 		public $email;
 		public $admin;
 		
-		/* static function find_by_id($id) {
-			$result = mysqli_query($GLOBALS['db'], "select * from users where id=$id");
-			if($result == false) return null;
-			while ($row = mysqli_fetch_assoc($result)) {
-				var_dump($row);
-				if(isset($row['id'])) $this->id = $row['id'];
-				if(isset($row['name'])) $this->name = $row['name'];
-				if(isset($row['password'])) $this->password = $row['password'];
-				if(isset($row['email'])) $this->email = $row['email'];
-				if(isset($row['admin'])) $this->admin = $row['admin'];
-				echo $this->name;
-				echo $this->password;
+		function __construct($name = null, $password = null, $email = null, $admin = 0) {
+			$this->name = $name;
+			$this->password = md5($password);
+			$this->email = $email;
+			$this->admin = $admin;
+		}
+		public function create() {
+			$query = "insert into users(name, password, email, admin) values('{$this->name}', '{$this->password}', '{$this->email}', '{$this->admin}')";
+			$result = mysqli_query($GLOBALS['db'], $query);
+			if ($result) {
+				$this->id = mysqli_insert_id($GLOBALS['db']);
+			} else {
+				$this->id = null;
 			}
-		}*/
+			return $this->id;
+		}
+		
 		static function find_all() {
 			$users = [];
 			
@@ -86,6 +89,34 @@
 			$newUser->admin = $row['admin'];
 			return $newUser;
 		}
-		
-	}#write function, find my name and password.
+		static function find_by_name_and_password($name, $password) {
+			$cryptedPassword = md5($password);
+			$result = mysqli_query($GLOBALS['db'], "select * from users where name='$name' and password='$cryptedPassword'");
+			if($result == false) return null;
+			$row = mysqli_fetch_assoc($result);
+			if($row == null) return null;
+			
+			$newUser = new User;
+			$newUser->id = $row['id'];
+			$newUser->name = $row['name'];
+			$newUser->password = $row['password'];
+			$newUser->email = $row['email'];
+			$newUser->admin = $row['admin'];
+			return $newUser;
+		}
+		static function admin_change($id, $bool) {
+			if($bool) {
+				$cmd = "update users set admin=1 where id={$id}"; 
+				$result = mysqli_query($GLOBALS['db'], $cmd);
+			}
+			else {
+				$cmd = "update users set admin=0 where id={$id}"; 
+				$result = mysqli_query($GLOBALS['db'], $cmd);
+			}
+			return $result; 
+			
+
+		}
+	}
+#Redu edit User.php to use user.php
 ?>

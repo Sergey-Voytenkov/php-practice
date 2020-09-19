@@ -4,24 +4,36 @@
 		header('Location: /signin.php');
 		exit;
 	} else {
-		include '../db.php';		
+		include '../user.php';		
 		
 		$userid = $_COOKIE['userId'];
-		$result = mysqli_query($connection, "select * from users where id=$userid");
-		if($result) {
-			$user = mysqli_fetch_assoc($result);
-			if($user) {
-				if($user['admin'] != 1) {
-					header("HTTP/1.1 403 No access");
-					exit; 
-				} 
-			}
-		} 
+		$current_user = User::find_by_id($userid);
+		
+		
+		
+		if(!$current_user) {
+			// current_user == null
+			header("HTTP/1.1 403 No access");
+			exit;
+		}
+		
+		if(!$current_user->admin) {		
+			header("HTTP/1.1 403 No access");
+			exit; 
+		}
+		 
 	
 		if((isset($_POST['make_admin']) || isset($_POST['remove_access'])) && isset($_POST['userId'])) {
-			if(isset($_POST['make_admin'])) $cmd = "update users set admin=1 where id={$_POST['userId']}";
-			else $cmd = "update users set admin=0 where id={$_POST['userId']}";
-			mysqli_query($connection, $cmd);
+			if(isset($_POST['make_admin'])) User::admin_change($_POST['userId'], 1);
+			else User::admin_change($_POST['userId'], 0);
+			
+			//$user = User::find_by_id($_POST['userId']);
+			//if(isset($_POST['make_admin'])) $user->admin_change(1);
+			//else $user->admin_change(0);
+			
+			
+			//$user = User::find_by_id($_POST['userId']);
+			//$user->admin_change(isset($_POST['make_admin']));
 		} 
 		header('Location: index.php');	
     }

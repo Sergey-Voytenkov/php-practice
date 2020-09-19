@@ -13,3 +13,5 @@ delete form <table> where name='plee' * Deletes all records that have plee.
 update animals set name='Ploop' where name='Rat' *Changes all records and sets there names to be ploop where current name is rat.
 
 update animals set  name='Rat' * Set all records to rat without fitering, ALL OF THEM. 
+
+ALTER TABLE someTable MODIFY culumn comumnParamaters command;

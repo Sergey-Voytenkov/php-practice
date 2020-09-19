@@ -1,5 +1,4 @@
 <?php
 	include 'user.php';
-	$result = User::find_by_name('Sergey');
-	var_dump($result);
+	User::admin_change(4, 0);
 ?>

@@ -1,17 +1,17 @@
 <?php 
 	if(isset($_POST['username']) && isset($_POST['password'])) {
-		if (strlen($_POST['password']) < 8) $error = 'Password must be at least 8 characters';
+		if (strlen($_POST['password']) < 8) $error = 'Password must be at least 8 characters.';
 		else {
-			include 'db.php';
-			$name = $_POST['username'];
-			$pssd = md5($_POST['password']);
-			$email = $_POST['email'];
-			$query = "insert into users(name, password, email) values('$name', '$pssd', '$email')";
-			mysqli_query($db, $query);
-			
-			mysqli_close($db);
-			header('Location: signin.php');
-			exit;
+			include 'user.php';
+			$user = new User($_POST['username'], $_POST['password'], $_POST['email'], 0);
+			if($user->create() == null) {
+				$error = 'User was not created.';
+				unset($user);
+			} else {
+				unset($user);
+				header('Location: signin.php');
+				exit;
+			}
 		}
 	}
 ?><!DOCTYPE html>

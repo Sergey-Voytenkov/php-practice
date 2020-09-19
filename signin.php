@@ -1,4 +1,5 @@
 <?php
+	include 'user.php';
 	if (isset($_COOKIE['userId'])) {
 		header('Location: index.php'); 
 		exit;
@@ -8,25 +9,15 @@
 	if(isset($_POST['password']) && strlen($_POST['password']) < 8) $errors[]= "The Password must be 8 or more characters. ";
 	
 	if(count($errors) == 0 && isset($_POST['username'], $_POST['password'])) {
-		include 'db.php';
-		
 		$signin_name = $_POST['username'];
-		$signin_password = md5($_POST['password']);
-		$command = "select * from users where name='$signin_name' and password='$signin_password'";
-		$users = mysqli_query($db, $command);
-		if ($users) {
-			$user = mysqli_fetch_assoc($users);
-			mysqli_close($db);
-			
-			if ($user) {
-				setcookie('userId', $user['id'], time()+60*20, "/");
-				if($user['admin'] == 1) header('Location: admin/index.php');
-				else header('Location: index.php');
-				exit;
-			}
+		$signin_password = $_POST['password'];
+		$user = User::find_by_name_and_password($signin_name, $signin_password);
+		if ($user) {
+			setcookie('userId', $user->id, time()+60*20, "/");
+			if($user->admin == 1) header('Location: admin/index.php');
+			else header('Location: index.php');
+			exit;
 		}
-		
-		
 		$errors[]= 'User not found';
 	} 
 	$error = implode('<br>', $errors);

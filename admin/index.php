@@ -3,20 +3,19 @@
 		header('Location: /signin.php');
 		exit;
 	} else {
-		include '../db.php';
+		include '../user.php';
 		
 		
-		$userid = $_COOKIE['userId'];
-		$result = mysqli_query($db, "select * from users where id=$userid");
-		if($result) {
-			$user = mysqli_fetch_assoc($result);
-			if($user) {
-				if($user['admin'] != 1) {
-					header('Location: /index.php');
-					exit;
-				} 
-			}
-		} 
+		$current_user = User::find_by_id($_COOKIE['userId']);
+		if($current_user) {
+			if(!$current_user->admin) {
+				header('Location: /index.php');
+				exit;
+			} 
+		} else {
+			header('Location" /signin.php');
+			exit;
+		}			
 	}
 ?><!doctype html>
 <html>
@@ -26,7 +25,7 @@
 	<body>
 		<div class="index_overlay">
 			<?php
-				echo "Hello {$user['name']}";
+				echo "Hello {$current_user->name}";
 			?>
 			<table class="table" border="1" cellspacing="0" cellpadding="4">
 				<tr>
@@ -38,25 +37,28 @@
 					<th>Action</th>
 				</tr>
 				<?php
-					if ($db) {
-						$data = mysqli_query($db, 'select * from users');
-					}
-					while ($row = mysqli_fetch_assoc(false)) {
-                        echo"<tr>";
-                        foreach ($row as $collumn) echo "<td>$collumn</td>";
+					$users = User::find_all();
+					
+					foreach ($users as $user) {
+						echo "<tr>";
+						echo "<td>{$user->id}</td>";
+						echo "<td>{$user->name}</td>";
+						echo "<td>{$user->password}</td>";
+						echo "<td>{$user->email}</td>";
+						echo "<td>{$user->admin}</td>";
 						echo "<td>";
-						if($row['id'] != 1) {
-							if($row['admin'] == 1) {
+						if($user->id != $current_user->id) {
+							if($user->admin) {
 							?>
 								<form action="editUser.php" method="POST">
-									<input type="hidden" name="userId" value="<?php echo $row['id']; ?>"/>
+									<input type="hidden" name="userId" value="<?php echo $user->id; ?>"/>
 									<input type="submit" name="remove_access" value="Remove Access"/>
 								</form>
 							<?php
 							} else {
 							?> 
 								<form action="editUser.php" method="POST">
-									<input type="hidden" name="userId" value="<?php echo $row['id']; ?>"/>
+									<input type="hidden" name="userId" value="<?php echo $user->id; ?>"/>
 									<input type="submit" name="make_admin" value="Make Admin"/>
 								</form>
 							<?php
@@ -65,8 +67,20 @@
 						echo "</td>";
                         echo"</tr>";
                     }
-
-                    mysqli_close($db);
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				?>
 			</table>
 			<div>
