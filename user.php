@@ -118,5 +118,5 @@
 
 		}
 	}
-#Redu edit User.php to use user.php
+#Setup in setup so that in Mysqli a table is created, with (id auto inercrement, name string, price float, image string).    Make index php into users php, and make a file with 2 options, to manage users and to manage products. 
 ?>

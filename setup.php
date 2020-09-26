@@ -1,6 +1,6 @@
 <?php	
 	include 'db.php';
-	$res = mysqli_query($db, 'create table users(
+	$res_1 = mysqli_query($db, 'create table users(
 		id integer auto_increment,
 		name char(100) not null,
 		password char(225) not null,
@@ -8,7 +8,14 @@
 		admin boolean default false,
 		PRIMARY key(id)
 	)');
-	if ($res) {
+	$res_2 = mysqli_query($db, 'create table products(
+		id auto increment,
+		name string,
+		price float,
+		image string,
+		PRIMARY key(id)
+	)')
+	if ($res_1) {
 		echo "Table users has been created.\n";
 		mysqli_query($db, "create unique index unique_email on users(email);");
 		
@@ -18,6 +25,9 @@
 			echo "Number of users created $numrec";
 		else echo 'Failed to create USER.';
 	};
+	if ($res_2) {
+		echo 'Table Products Created';
+	}
 	mysqli_close($db);
 	
 ?>
