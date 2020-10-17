@@ -117,6 +117,10 @@
 			
 
 		}
+		
 	}
-#Setup in setup so that in Mysqli a table is created, with (id auto inercrement, name string, price float, image string).    Make index php into users php, and make a file with 2 options, to manage users and to manage products. 
+	/* FINISH ADMIN/INDEX.PHP. Should contain 2 links, one for users, one for products. 
+	Create new_product.php with a form. Must have feilds for name, cost, image file name. 
+	Finsih admin/products page. Add 2 links aobut the grid, one directs you back to admin index. The other to new_product page. See screenshot on phone.
+	Add Css to make it look better. */
 ?>

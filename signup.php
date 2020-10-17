@@ -2,7 +2,7 @@
 	if(isset($_POST['username']) && isset($_POST['password'])) {
 		if (strlen($_POST['password']) < 8) $error = 'Password must be at least 8 characters.';
 		else {
-			include 'user.php';
+			include 'db/user.php';
 			$user = new User($_POST['username'], $_POST['password'], $_POST['email'], 0);
 			if($user->create() == null) {
 				$error = 'User was not created.';

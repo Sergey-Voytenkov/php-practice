@@ -1,0 +1,36 @@
+html {
+	margin: 0;
+}
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+input {
+	margin: 5px;
+}
+#main {
+	border: 1px solid black;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	border: 1px solid #66ccff;
+	border-radius: 15px;
+	background-color: rgba(204,230,255,0.25);
+}
+#back {
+	margin-top: -50px;
+}
+#file {
+	margin-top: -10px;
+}
+#div-submit {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+}
+#submit{
+	margin-bottom: -10px;
+	margin-left: 180px;
+	
+}

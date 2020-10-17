@@ -1,5 +1,5 @@
 <?php 
-	include 'db/user.php'; 
+	include 'db/product.php'; 
 	
 	if(!isset($_COOKIE['userId'])) {
 		header('Location: signin.php');
@@ -12,22 +12,16 @@
 	</head><div class="index_overlay">
 			<table class="table" border="1" cellspacing="0" cellpadding="4">
 				<tr>
-					<th>id</th>
-					<th>Name</th>
-					<th>Password</th>
-					<th>email</th>
-					<th>Admin</th>
+					<th>Products</th>
+					<th>Price</th>
 				</tr>
 				<?php
-					$result = User::find_all();
-					foreach($result as $user) {
+					$result = Product::find_all();
+					foreach($result as $product) {
 						echo '<tr>';
-						echo '<td>' . $user->id . '</td>';
-						echo '<td>' . $user->name . '</td>';
-						echo '<td>' . $user->password . '</td>';
-						echo '<td>' . $user->email . '</td>';
-						echo '<td>' . $user->admin . '</td>';
-						echo '</tr>';
+						echo '<td>' . $product->name . '</td>';
+						echo '<td>' . $product->price . '</td>';
+						echo '<td>' . "<img src='$product->image' />" . '</td>';
 					} 
 				?>
 			</table>

@@ -1,5 +1,5 @@
 <?php
-	include 'user.php';
+	include 'db/user.php';
 	if (isset($_COOKIE['userId'])) {
 		header('Location: index.php'); 
 		exit;
@@ -13,8 +13,8 @@
 		$signin_password = $_POST['password'];
 		$user = User::find_by_name_and_password($signin_name, $signin_password);
 		if ($user) {
-			setcookie('userId', $user->id, time()+60*20, "/");
-			if($user->admin == 1) header('Location: admin/index.php');
+			setcookie('userId', $user->id, time()+60*60, "/");
+			if($user->admin == 1) header('Location: admin/users.php');
 			else header('Location: index.php');
 			exit;
 		}

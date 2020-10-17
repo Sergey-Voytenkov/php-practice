@@ -1,5 +1,5 @@
 <?php
-	setcookie('userId', '', time() -5200);
+	setcookie('userId', '', time() -520000);
 	header('Location: signin.php');
 	exit;
 ?>

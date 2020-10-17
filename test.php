@@ -1,4 +1,10 @@
-<?php
-	include 'user.php';
-	User::admin_change(4, 0);
-?>
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+</table>

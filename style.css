@@ -4,7 +4,7 @@ html, body {
 	height: 100%;
 }
 body {
-	background-image: url("background.jpg");
+	background-image: url("C:\Apache24\htdocs\images\background.jpg");
 	background-size: cover;
 }
 form {
@@ -73,4 +73,8 @@ input {
 	background: rgba(255,255, 255,0.8);
 	position: absolute;
 	flex-direction: column;
+}
+img {
+	width: 50px;
+	max-width: 50px;
 }

@@ -1,5 +1,9 @@
-<?php	
-	include 'db.php';
+<?php
+	$ip = 'localhost';
+	$username = 'god';
+	$password = '904325sv';
+
+	$db = mysqli_connect($ip, $username, $password, 'test') or die('Sorry, the system is having maintanance. Please try again later.');
 	$res_1 = mysqli_query($db, 'create table users(
 		id integer auto_increment,
 		name char(100) not null,
@@ -9,12 +13,12 @@
 		PRIMARY key(id)
 	)');
 	$res_2 = mysqli_query($db, 'create table products(
-		id auto increment,
-		name string,
-		price float,
-		image string,
+		id integer auto_increment,
+		name char(255) not null,
+		price float(6,2),
+		image char(255),
 		PRIMARY key(id)
-	)')
+	)');
 	if ($res_1) {
 		echo "Table users has been created.\n";
 		mysqli_query($db, "create unique index unique_email on users(email);");
@@ -26,6 +30,7 @@
 		else echo 'Failed to create USER.';
 	};
 	if ($res_2) {
+		echo "\n";
 		echo 'Table Products Created';
 	}
 	mysqli_close($db);

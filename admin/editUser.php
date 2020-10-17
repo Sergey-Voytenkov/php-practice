@@ -4,7 +4,7 @@
 		header('Location: /signin.php');
 		exit;
 	} else {
-		include '../user.php';		
+		include '../db/user.php';		
 		
 		$userid = $_COOKIE['userId'];
 		$current_user = User::find_by_id($userid);
@@ -35,6 +35,6 @@
 			//$user = User::find_by_id($_POST['userId']);
 			//$user->admin_change(isset($_POST['make_admin']));
 		} 
-		header('Location: index.php');	
+		header('Location: users.php');	
     }
 ?>
