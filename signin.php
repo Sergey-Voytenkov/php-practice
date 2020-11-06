@@ -14,7 +14,7 @@
 		$user = User::find_by_name_and_password($signin_name, $signin_password);
 		if ($user) {
 			setcookie('userId', $user->id, time()+60*60, "/");
-			if($user->admin == 1) header('Location: admin/users.php');
+			if($user->admin == 1) header('Location: admin/index.php');
 			else header('Location: index.php');
 			exit;
 		}

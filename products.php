@@ -21,7 +21,7 @@
 						echo '<tr>';
 						echo '<td>' . $product->name . '</td>';
 						echo '<td>' . $product->price . '</td>';
-						echo '<td>' . "<img src='$product->image' />" . '</td>';
+						echo '<td>' . "<img src='/images/products/$product->image' />" . '</td>';
 					} 
 				?>
 			</table>

@@ -24,5 +24,9 @@
 			}
 			return $array;
 		}
+		static function addProduct($name = null, $price = null, $image = null) {
+			$query = "insert into products(name, price, image) values('{$name}', '{$price}', '{$image}')";
+			mysqli_query($GLOBALS['db'], $query);
+		}
 	}
 ?>

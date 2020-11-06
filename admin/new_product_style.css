@@ -9,7 +9,8 @@ body {
 input {
 	margin: 5px;
 }
-#main {
+
+/* #main {
 	border: 1px solid black;
 	width: auto;
 	height: auto;
@@ -18,11 +19,9 @@ input {
 	border-radius: 15px;
 	background-color: rgba(204,230,255,0.25);
 }
-#back {
-	margin-top: -50px;
-}
+
 #file {
-	margin-top: -10px;
+	margin-top: 10px;
 }
 #div-submit {
 	display: flex;
@@ -33,4 +32,54 @@ input {
 	margin-bottom: -10px;
 	margin-left: 180px;
 	
+}
+*/
+#main {
+	margin-top: -5%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: start;
+	
+}
+form {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 0;
+	padding: 10px;
+	border: 1px solid #66ccff;
+	border-radius: 15px;
+	background-color: rgba(204,230,255,0.25);
+}
+.row {
+	display: flex;
+	margin-bottom: .5em;
+}
+#submit_row {
+	display: flex;
+	margin: 0;
+	margin-top: 1em;
+}
+.col1 {
+	width: 17%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 0.25em;
+}
+.col2 {
+	width: 83%;
+}
+input {
+	width: 100%;
+	margin: 0;
+}
+#submit {
+	width: 30%;
+}
+#back {
+	color: black;
+}
+#back:hover {
+	color: aqua;
 }

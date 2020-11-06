@@ -1,6 +1,6 @@
 <?php 
 	include 'db/user.php'; 
-	
+	if(isset($_COOKIE['userId']) == 1) header('Location: /admin/index.php');
 	if(!isset($_COOKIE['userId'])) {
 		header('Location: signin.php');
 		exit;
